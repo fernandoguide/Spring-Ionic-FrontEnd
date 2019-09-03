@@ -30,7 +30,7 @@ export class HomePage {
   }
   login(){
     this.auth.authenticate(this.creds).subscribe(response =>{
-      console.log(response.headers.get('Authorization'));
+      this.auth.succcessfullLogin(response.headers.get('Authorization'));
       this.navCtrl.navigateBack('categorias');
     }, error => {});
     console.log(this.creds);
