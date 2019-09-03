@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from '@ionic/angular';
 import { CredenciaisDTO } from 'src/models/credenciais.dto';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,9 @@ export class HomePage {
     senha: ""
   };
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {}
+  constructor(public navCtrl: NavController,
+     public menu: MenuController,
+     public auth: AuthService) {}
 
   ionViewWillEnter() {
     this.menu.swipeEnable(false);
@@ -26,7 +29,11 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
   login(){
+    this.auth.authenticate(this.creds).subscribe(response =>{
+      console.log(response.headers.get('Authorization'));
+      this.navCtrl.navigateBack('categorias');
+    }, error => {});
     console.log(this.creds);
-    this.navCtrl.navigateBack('categorias');
+   
   }
 }

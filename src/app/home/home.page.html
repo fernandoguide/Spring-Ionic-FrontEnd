@@ -10,22 +10,30 @@
 </ion-header>
 
 <ion-content>
-   <h3>Sistema de Pedidos</h3>
-   <img src="assets/tela-inicial.png" alt="logo">
+  <h3>Sistema de Pedidos</h3>
+  <img src="assets/tela-inicial.png" alt="logo" />
 
-   <form>
+  <form>
     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="creds.email" name=email ></ion-input>
+      <!-- <ion-label stacked>Email</ion-label> -->
+      <ion-input
+        placeholder="Digite aqui seu email"
+        type="text"
+        [(ngModel)]="creds.email"
+        name="email"
+      ></ion-input>
+      <!-- <ion-input type="text" [(ngModel)]="creds.email" name=email ></ion-input> -->
     </ion-item>
     <ion-item>
-      <ion-label stacked>Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="creds.senha" name=senha ></ion-input>
+      <!-- <ion-label stacked>Senha</ion-label> -->
+      <ion-input
+        placeholder="Digite aqui sua senha"
+        type="password"
+        [(ngModel)]="creds.senha"
+        name="senha"
+      ></ion-input>
     </ion-item>
-    <ion-button expand="block"(click)="login()">Entrar</ion-button>
+    <ion-button expand="block" (click)="login()">Entrar</ion-button>
   </form>
   <ion-button expand="block" fill="outline">Registrar</ion-button>
-
-
-
 </ion-content>
