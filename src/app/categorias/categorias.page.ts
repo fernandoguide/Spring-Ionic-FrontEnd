@@ -27,9 +27,7 @@ export class CategoriasPage implements OnInit {
         this.items = res;
         console.log(res);
       },
-      error => {
-        console.log(error);
-      });
+      error => {});
     
   }
 
