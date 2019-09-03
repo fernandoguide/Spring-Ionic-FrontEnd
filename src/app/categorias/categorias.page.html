@@ -15,11 +15,15 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-thumbnail slot="start">
-        <img
+        <!-- <img
           src="{{bucketUrl}}/cat{{item.id}}.jpg"
-        />
+        /> -->
+        <img
+        src="../../assets/cat{{item.id}}.jpg"
+      />
       </ion-thumbnail>
       <ion-label>{{item.nome}}</ion-label>
+      
     </ion-item>
   </ion-list>
 </ion-content>
