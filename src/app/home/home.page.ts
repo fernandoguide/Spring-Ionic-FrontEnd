@@ -28,10 +28,18 @@ export class HomePage {
   ionViewDidLeave() {
     this.menu.swipeEnable(true);
   }
+  ionViewDidEnter(){
+    this.auth.refreshToken().subscribe(response =>{
+      this.auth.succcessfullLogin(response.headers.get('Authorization'));
+      this.navCtrl.navigateRoot('categorias');
+    }, error => {});
+   
+  }
+
   login(){
     this.auth.authenticate(this.creds).subscribe(response =>{
       this.auth.succcessfullLogin(response.headers.get('Authorization'));
-      this.navCtrl.navigateBack('categorias');
+      this.navCtrl.navigateRoot('categorias');
     }, error => {});
     console.log(this.creds);
    
