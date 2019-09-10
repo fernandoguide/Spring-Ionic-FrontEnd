@@ -3,6 +3,7 @@ import { StorageService } from 'src/services/storage.service';
 import { ClienteDTO } from 'src/models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from 'src/config/api.config';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -18,9 +19,10 @@ export class ProfilePage implements OnInit {
   cliente: ClienteDTO;
 
   constructor(
+    public navCtrl: NavController,
     public storage: StorageService,
-    public clienteService: ClienteService ) { 
-    }
+    public clienteService: ClienteService) {
+  }
 
   ngOnInit() {
 
@@ -31,17 +33,23 @@ export class ProfilePage implements OnInit {
           this.cliente = response;
           this.getImageIfExists();
         },
-        error => {});
+          error => {
+            if (error.status == 403) {
+              this.navCtrl.navigateRoot('home')
+            }
+          });
+    } else {
+      this.navCtrl.navigateRoot('home');
     }
   }
 
   getImageIfExists() {
     // this.clienteService.getImageFromBucket(this.cliente.id)
     this.clienteService.getImageFromAssets(this.cliente.id)
-    .subscribe(response => {
-      // this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
-      this.cliente.imageUrl = `${API_CONFIG.baseImgAssests}/cp${this.cliente.id}.jpg`;
-    },
-    error => {});
+      .subscribe(response => {
+        // this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
+        this.cliente.imageUrl = `${API_CONFIG.baseImgAssests}/cp${this.cliente.id}.jpg`;
+      },
+        error => { });
   }
 }
