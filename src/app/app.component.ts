@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -18,22 +19,32 @@ export class AppComponent {
     },{
       title: 'Profile',
       url: '/profile',
-      icon: 'profile'
-    }    
+      icon: 'profile'  
+    }      
   ];
 
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    public auth: AuthService,
+    public nav: NavController
   ) {
     this.initializeApp();
+    
+   
+  }
+  logout() {
+      this.auth.logout();
+      this.nav.navigateRoot('home');
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
     });
   }
+ 
 }

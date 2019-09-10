@@ -22,11 +22,11 @@ export class HomePage {
      public auth: AuthService) {}
 
   ionViewWillEnter() {
-    this.menu.swipeEnable(false);
+    this.menu.swipeGesture(false);
   }
 
   ionViewDidLeave() {
-    this.menu.swipeEnable(true);
+    this.menu.swipeGesture(true);
   }
   ionViewDidEnter(){
     this.auth.refreshToken().subscribe(response =>{
