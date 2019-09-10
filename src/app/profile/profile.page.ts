@@ -40,7 +40,7 @@ export class ProfilePage implements OnInit {
     this.clienteService.getImageFromAssets(this.cliente.id)
     .subscribe(response => {
       // this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
-      this.cliente.imageUrl = `../../assets/cp${this.cliente.id}.jpg`;
+      this.cliente.imageUrl = `${API_CONFIG.baseImgAssests}/cp${this.cliente.id}.jpg`;
     },
     error => {});
   }
