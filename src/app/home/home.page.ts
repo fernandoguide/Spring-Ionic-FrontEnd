@@ -44,4 +44,7 @@ export class HomePage {
     console.log(this.creds);
    
   }
+  signup(){
+    this.navCtrl.navigateRoot('signup');
+  }
 }

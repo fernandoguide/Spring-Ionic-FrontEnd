@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novo Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Dados Pessoais</ion-label>
+      </ion-list-header>    
+      <ion-item>
+      <ion-input placeholder="Nome*" name="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Email*" name="email" type="text"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-input placeholder="Senha*" name="senha" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input placeholder="CPF ou CNPJ" name="cpfOuCnpj" type="text"></ion-input>
+        </ion-item>
+    <ion-item>
+        <ion-input placeholder="Telefone 1*"name="telefone1"type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Telefone 2"name="telefone2"type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Telefone 3"name="telefone3"type="text"></ion-input>
+      </ion-item>
+  </ion-list>
+
+    
+  <ion-list>
+      <ion-list-header>
+          <ion-label>Endereço</ion-label>
+    </ion-list-header>  
+    <ion-item>
+        <ion-input placeholder="CEP" name="cep" type="text"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-input placeholder="Logradouro*" name="logradouro"type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Número*" name="numero" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Complemento"name="complemento"type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Bairro" name="bairro" type="text"></ion-input>
+    </ion-item> 
+    <ion-item>
+        <ion-select placeholder="Estado*"name="estadoId"(ionChange)="updateCidades()">
+          <ion-select-option value="1">Minas Gerais</ion-select-option>
+          <ion-select-option value="2">São Paulo</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select placeholder="Cidade*" name="cidadeId">
+          <ion-select-option value="1">Uberlândia</ion-select-option>
+          <ion-select-option value="2">Campinas</ion-select-option>
+        </ion-select>
+      </ion-item>  
+
+  </ion-list>
+
+    <ion-list radio-group name="tipo">
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label>Tipo de cliente</ion-label>
+          </ion-list-header> 
+          <ion-item>
+            <ion-label>Pessoa Física</ion-label>
+            <ion-radio slot="start" value="1" checked></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pessoa jurídica</ion-label>
+            <ion-radio slot="start" value="2"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+   
+    <ion-button ion-button block type="submit">Criar conta</ion-button>
+  </form>
+</ion-content>
