@@ -12,15 +12,25 @@
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{ p.title }}
               </ion-label>
             </ion-item>
-           
           </ion-menu-toggle>
-          <ion-item expand="block" (click)="logout()">Logout</ion-item>
         </ion-list>
       </ion-content>
+      <ion-card-content>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item (click)="logout()">
+            <ion-button slot="end" color="light">
+              <ion-icon slot="end" name="close-circle" color="danger">
+              </ion-icon>
+              Logout
+            </ion-button>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-card-content>
     </ion-menu>
+
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

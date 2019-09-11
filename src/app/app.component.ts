@@ -4,6 +4,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from 'src/services/auth.service';
+import { StorageService } from 'src/services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent {
       title: 'Profile',
       url: '/profile',
       icon: 'profile'  
-    }      
+    }    
   ];
 
   constructor(
@@ -28,15 +29,20 @@ export class AppComponent {
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public auth: AuthService,
-    public nav: NavController
+    public nav: NavController,
+    public storage: StorageService
   ) {
     this.initializeApp();
     
    
   }
   logout() {
+    
       this.auth.logout();
       this.nav.navigateRoot('home');
+      this.storage.setLocalUser(null);
+    
+     
   }
 
   initializeApp() {
