@@ -17,40 +17,37 @@ export class AppComponent {
       title: 'Categorias',
       url: '/categorias',
       icon: 'Cat'
-    },{
+    }, {
       title: 'Profile',
       url: '/profile',
-      icon: 'profile'  
-    }    
+      icon: 'profile'
+    }
   ];
 
   constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar, 
+    public platform: Platform,
+    public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public auth: AuthService,
     public nav: NavController,
     public storage: StorageService
   ) {
     this.initializeApp();
-    
-   
+
+
   }
   logout() {
-    
-      this.auth.logout();
-      this.nav.navigateRoot('home');
-      this.storage.setLocalUser(null);
-    
-     
+
+    this.auth.logout();
+    this.nav.navigateRoot('home');
+    this.storage.setLocalUser(null);
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
     });
   }
- 
+
 }

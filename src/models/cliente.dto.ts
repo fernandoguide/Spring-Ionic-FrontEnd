@@ -1,6 +1,6 @@
 export interface ClienteDTO {
-    id : string;
-    nome : string;
-    email : string;
-    imageUrl? : string;
+    id: string;
+    nome: string;
+    email: string;
+    imageUrl?: string;
 }
